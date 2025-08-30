@@ -27,7 +27,7 @@
 	```
 2. Clone this repo:
 	```sh
-	git clone <your-repo-url> ~/.config/nvim
+	git clone https://github.com/argon-chat/nvim.git ~/.config/nvim
 	```
 3. Install the required dependencies (see below).
 4. Open Neovim and plugins will install automatically:
@@ -41,7 +41,7 @@
 2. Clone this repo:
 	- Use Git Bash or PowerShell:
 	  ```sh
-	  git clone <your-repo-url> "$env:LOCALAPPDATA\nvim"
+	  git clone https://github.com/argon-chat/nvim.git "$env:LOCALAPPDATA\nvim"
 	  ```
 3. Install the required dependencies (see below).
 4. Open Neovim (`nvim.exe`) and plugins will install automatically.
