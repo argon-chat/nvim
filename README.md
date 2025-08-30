@@ -30,9 +30,14 @@
 	git clone https://github.com/argon-chat/nvim.git ~/.config/nvim
 	```
 3. Install the required dependencies (see below).
-4. Open Neovim and plugins will install automatically:
+4. Open Neovim:
 	```sh
 	nvim
+	```
+5. Inside Neovim, run the following commands to finish setup:
+	```vim
+	:MasonInstallAll
+	:Lazy sync
 	```
 
 ### Install (Windows)
@@ -44,7 +49,12 @@
 	  git clone https://github.com/argon-chat/nvim.git "$env:LOCALAPPDATA\nvim"
 	  ```
 3. Install the required dependencies (see below).
-4. Open Neovim (`nvim.exe`) and plugins will install automatically.
+4. Open Neovim (`nvim.exe`).
+5. Inside Neovim, run the following commands to finish setup:
+	```vim
+	:MasonInstallAll
+	:Lazy sync
+	```
 
 ### Uninstall (Linux/macOS)
 ```sh
