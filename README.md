@@ -67,12 +67,6 @@ Restore your backup if needed.
 This Neovim configuration requires the following external tools to be installed on your system:
 
 ## General
-...existing code...
-# Requirements
-
-This Neovim configuration requires the following external tools to be installed on your system:
-
-## General
 - Git
 - Python (for some plugins and LSPs)
 - Node.js (for JavaScript/TypeScript LSPs and formatters)
