@@ -107,22 +107,24 @@ Below is a complete list of all required dependencies outside of Neovim, and exa
 - Ruby (for Ruby LSP/formatter)
 - Ruby gems: solargraph, rufo (install with `gem install solargraph rufo`)
 - Go, Rust, Zig, C/C++ compiler (for language servers/formatters)
+- libgit2 (for plugins or tools that require native git bindings)
+- gpgme (for plugins or tools that require GPG support)
 - npm global packages: prettier, eslint_d, yarn (optional)
 
 ## Example install commands (Debian/Ubuntu):
 
 ```sh
 sudo apt update
-sudo apt install -y git python3 python3-pip nodejs npm ruby-full build-essential
+sudo apt install -y git python3 python3-pip nodejs npm ruby-full build-essential libgit2-dev libgpgme-dev
 pip3 install --user pynvim
 sudo npm install -g prettier eslint_d yarn
 gem install solargraph rufo
 # k9s install
 if ! command -v k9s &> /dev/null; then
-	curl -sSLo k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz
-	tar -xzf k9s.tar.gz k9s
-	sudo mv k9s /usr/local/bin/
-	rm k9s.tar.gz
+  curl -sSLo k9s.tar.gz https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz
+  tar -xzf k9s.tar.gz k9s
+  sudo mv k9s /usr/local/bin/
+  rm k9s.tar.gz
 fi
 ```
 
