@@ -23,6 +23,12 @@ map("n", "<leader>ee", ":lua vim.diagnostic.setqflist()<CR>", { desc = "Show err
 map("n", "<leader>fe", ":NvimTreeFocus<CR>", { desc = "Focus NvimTree (multi-key)" })
 map("n", "<leader><Left>", ":bprev<CR>", { desc = "Go to previous buffer" })
 map("n", "<leader><Right>", ":bnext<CR>", { desc = "Go to next buffer" })
+map("n", "<leader>o", function()
+  require('telescope.builtin').find_files()
+end, { desc = "Find files using Telescope" })
+map("n", "<leader>s", function()
+    require('telescope.builtin').live_grep()
+  end, { desc = "Search for a string with rg in Telescope" })
 -- Kubernetes Group Titles
 map("n", "<leader>k", function() end, { desc = "Kubernetes" })
 
