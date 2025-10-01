@@ -8,6 +8,7 @@ local enable_providers = {
 
 vim.opt.colorcolumn = "79"
 vim.opt.relativenumber = true
+vim.opt.completeopt = { "menuone", "noselect", "popup" } 
 local lsp = require("lspconfig")
 local fn = vim.fn
 local cmp = require("cmp")
@@ -38,7 +39,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   desc = "Run biome lint on save"
 })
 -- Buffer-local LSP keymaps
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+  vim.lsp.completion.enable(true, client.id, bufnr, {
+		autotrigger = true,
+		convert = function(item)
+          return { abbr = item.label:gsub("%b()", "") }
+		end,
+  })
+  vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "trigger autocompletion" })
   local map = function(mode, lhs, rhs) vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true }) end
   map("n", "gd", vim.lsp.buf.definition)
   map("n", "gr", vim.lsp.buf.references)
