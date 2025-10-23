@@ -61,8 +61,13 @@ local roots = {
   go   = {".git", "go.work", "go.mod"},
   ruby = {".git", "Gemfile", ".ruby-version"},
   cs   = {".git", "*.sln", "*.csproj"},
-  py   = {".git", "pyproject.toml", "requirements.txt"},
+  py   = {".git", "pyproject.toml", "requirements.txt", "setup.py"},
   java = {".git", "pom.xml", "build.gradle", "settings.gradle"},
+  c    = {".git", "Makefile", "CMakeLists.txt", "compile_commands.json"},
+  cpp  = {".git", "Makefile", "CMakeLists.txt", "compile_commands.json"},
+  rust = {".git", "Cargo.toml"},
+  zig  = {".git", "build.zig"},
+  php  = {".git", "composer.json", "composer.lock"},
 }
 
 -- JS/TS (note: tsserver is ts_ls in recent lspconfig)
@@ -94,4 +99,58 @@ vim.lsp.config.omnisharp = {
   root_markers = roots.cs,
   enable_roslyn_analyzers = true,
   organize_imports_on_format = true,
+}
+
+-- C/C++
+vim.lsp.config.clangd = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_markers = roots.cpp,
+  cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed" },
+}
+
+-- Rust
+vim.lsp.config.rust_analyzer = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_markers = roots.rust,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = { allFeatures = true },
+      checkOnSave = { command = "clippy" },
+    },
+  },
+}
+
+-- Zig
+vim.lsp.config.zls = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_markers = roots.zig,
+}
+
+-- PHP
+vim.lsp.config.phpactor = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_markers = roots.php,
+}
+
+-- Python
+vim.lsp.config.pylsp = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_markers = roots.py,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = { enabled = false },
+        mccabe = { enabled = false },
+        pyflakes = { enabled = false },
+        flake8 = { enabled = true },
+        black = { enabled = true },
+        isort = { enabled = true },
+      },
+    },
+  },
 }

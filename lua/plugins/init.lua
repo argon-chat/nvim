@@ -17,14 +17,16 @@ return {
     config = function()
       require("mason-lspconfig").setup {
         ensure_installed = {
-          "solargraph", -- Ruby
-          "gopls",      -- Go
-          "tsserver",   -- JS/TS
-          "eslint",     -- JS/TS linting
-          "csharp_ls",  -- C#
-          "clangd",     -- C/C++
+          "solargraph",    -- Ruby
+          "gopls",         -- Go
+          "tsserver",      -- JS/TS
+          "eslint",        -- JS/TS linting
+          "csharp_ls",     -- C#
+          "clangd",        -- C/C++
           "rust_analyzer", -- Rust
-          "zls",        -- Zig
+          "zls",           -- Zig
+          "phpactor",      -- PHP (or "intelephense")
+          "pylsp",         -- Python (or "pyright")
         },
       }
     end,
@@ -34,15 +36,20 @@ return {
     config = function()
       require("mason-null-ls").setup {
         ensure_installed = {
-          "prettier",   -- JS/TS formatter
-          "eslint_d",   -- JS/TS linter
-          "gofmt",      -- Go formatter
-          "goimports",  -- Go formatter
-          "rufo",       -- Ruby formatter
-          "clang_format", -- C/C++ formatter
-          "csharpier",    -- C# formatter
-          "rustfmt",      -- Rust formatter
-          "zigfmt",       -- Zig formatter
+          "prettier",      -- JS/TS formatter
+          "eslint_d",      -- JS/TS linter
+          "gofmt",         -- Go formatter
+          "goimports",     -- Go formatter
+          "rufo",          -- Ruby formatter
+          "clang_format",  -- C/C++ formatter
+          "csharpier",     -- C# formatter
+          "rustfmt",       -- Rust formatter
+          "zigfmt",        -- Zig formatter
+          "php_cs_fixer",  -- PHP formatter
+          "phpcs",         -- PHP linter
+          "black",         -- Python formatter
+          "isort",         -- Python import sorter
+          "flake8",        -- Python linter
         },
       }
     end,
