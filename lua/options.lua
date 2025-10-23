@@ -9,7 +9,6 @@ local enable_providers = {
 vim.opt.colorcolumn = "79"
 vim.opt.relativenumber = true
 vim.opt.completeopt = { "menuone", "noselect", "popup" } 
-local lsp = require("lspconfig")
 local fn = vim.fn
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
@@ -57,43 +56,42 @@ local on_attach = function(client, bufnr)
 end
 
 -- Root detection to avoid random startup
-local util = require("lspconfig.util")
 local roots = {
-  node = util.root_pattern("package.json", "tsconfig.json", ".git"),
-  go   = util.root_pattern("go.work", "go.mod", ".git"),
-  ruby = util.root_pattern("Gemfile", ".ruby-version", ".git"),
-  cs   = util.root_pattern("*.sln", "*.csproj", ".git"),
-  py   = util.root_pattern("pyproject.toml", "requirements.txt", ".git"),
-  java = util.root_pattern("pom.xml", "build.gradle", "settings.gradle", ".git"),
+  node = {".git", "package.json", "tsconfig.json"},
+  go   = {".git", "go.work", "go.mod"},
+  ruby = {".git", "Gemfile", ".ruby-version"},
+  cs   = {".git", "*.sln", "*.csproj"},
+  py   = {".git", "pyproject.toml", "requirements.txt"},
+  java = {".git", "pom.xml", "build.gradle", "settings.gradle"},
 }
 
 -- JS/TS (note: tsserver is ts_ls in recent lspconfig)
-lsp.ts_ls.setup({
+vim.lsp.config.ts_ls = {
   capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = roots.node,
-})
+  root_markers = roots.node,
+}
 
 -- Go
-lsp.gopls.setup({
+vim.lsp.config.gopls = {
   capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = roots.go,
+  root_markers = roots.go,
   settings = { gopls = { gofumpt = true } },
-})
+}
 
 -- Ruby
-lsp.solargraph.setup({
+vim.lsp.config.solargraph = {
   capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = roots.ruby,
-})
+  root_markers = roots.ruby,
+}
 
 -- C#
-lsp.omnisharp.setup({
+vim.lsp.config.omnisharp = {
   capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = roots.cs,
+  root_markers = roots.cs,
   enable_roslyn_analyzers = true,
   organize_imports_on_format = true,
-})
+}
