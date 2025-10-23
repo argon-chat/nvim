@@ -75,6 +75,7 @@ vim.lsp.config.ts_ls = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.node,
+  single_file_support = true,  -- This allows LSP to work on standalone files
 }
 
 -- Go
@@ -82,6 +83,7 @@ vim.lsp.config.gopls = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.go,
+  single_file_support = true,  -- This allows LSP to work on standalone files
   settings = { gopls = { gofumpt = true } },
 }
 
@@ -90,6 +92,7 @@ vim.lsp.config.solargraph = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.ruby,
+  single_file_support = true,  -- This allows LSP to work on standalone files
 }
 
 -- C#
@@ -97,6 +100,7 @@ vim.lsp.config.omnisharp = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.cs,
+  single_file_support = true,  -- This allows LSP to work on standalone files
   enable_roslyn_analyzers = true,
   organize_imports_on_format = true,
 }
@@ -107,6 +111,7 @@ vim.lsp.config.clangd = {
   on_attach = on_attach,
   root_markers = roots.cpp,
   cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed" },
+  single_file_support = true,  -- This allows LSP to work on standalone files
 }
 
 -- Rust
@@ -114,10 +119,12 @@ vim.lsp.config.rust_analyzer = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.rust,
+  single_file_support = true,  -- This allows LSP to work on standalone files
   settings = {
     ["rust-analyzer"] = {
       cargo = { allFeatures = true },
-      checkOnSave = { command = "clippy" },
+      checkOnSave = true,
+      check = { command = "clippy" },
     },
   },
 }
@@ -127,6 +134,7 @@ vim.lsp.config.zls = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.zig,
+  single_file_support = true,  -- This allows LSP to work on standalone files
 }
 
 -- PHP
@@ -134,6 +142,7 @@ vim.lsp.config.phpactor = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.php,
+  single_file_support = true,  -- This allows LSP to work on standalone files
 }
 
 -- Python
@@ -141,6 +150,7 @@ vim.lsp.config.pylsp = {
   capabilities = capabilities,
   on_attach = on_attach,
   root_markers = roots.py,
+  single_file_support = true,  -- This allows LSP to work on standalone files
   settings = {
     pylsp = {
       plugins = {
