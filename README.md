@@ -143,3 +143,4 @@ You must also install Go, Rust, Zig, and a C/C++ compiler using your OS package 
 # Credits
 
 1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
+2) Nvchad itself https://github.com/NvChad/NvChad, This repository is a packaged nvchad distribution and would not be possible if ncvhad did not exist.
